@@ -1,0 +1,127 @@
+                                                              Mathematics
+
+1) Count Digits
+
+    i) Iteratively :-
+    
+            int countDigits(int N){
+            int ans = 0;
+            while(N>0){
+                N=N/10;
+                ans++;
+            }
+            return ans;
+            } 
+            
+       Time complexity of this code is O(n)
+    
+    ii) Recursively :-
+            
+            int countDigits(int N){
+            if(N/10 == 0){
+                return 1;
+            }
+            return 1+countDigits(N/10);
+            }
+            
+2) Palindrome Numbers
+    
+        bool Palindrome(int x){
+        int ans =0;
+        int temp = x;
+        while(temp!=0){
+            int last_digit = temp%10;
+            ans = ans * 10 +last_digit;
+            temp = temp/10;
+        }
+        return temp==ans;
+        }
+        
+   Time complexity of this code is O(n)
+        
+3) Factorial of a Number
+
+    i) Iteratively :-
+    
+            int fact(int N){
+            int ans = 1;
+            for(int i=2;i<=N;i++){
+                ans = ans * i;
+            }
+            return ans;
+            }
+            
+    Time complexity of this code is O(n)
+    Space complexity of this code is O(1)
+            
+    ii) Recursively :-
+    
+            int fact(int N){
+            if(N == 0){
+                return 1;
+            }
+            return N*fact(N -1);
+            }
+      Time complexity of this code is O(n)
+      Space complexity of this code is O(n)
+            
+4) Trailing Zero in Factorial   
+
+    i) Brute Force Approach :-
+            First we need to find factorial and then we have to count the trailing zeroes in it. But its drawback is overflow issue for even small numbers.
+            Time complexity of this approach will be O(n).
+        
+    ii) Optimized Approach :-
+            
+            int countTrailingzero(int N){
+            int ans = 0;
+            for(int i=5;i<=N;i=i*5){
+                ans = ans + N/i;
+            }
+            return ans;
+            }
+           
+5) GCD or HCF of two numbers :-
+
+    i) Brute force Approach :-
+            first take minimum of two numbers and store it in a variable "ans", because GCD of two numbers will be <= minimum of those two number.
+            Then if modulo of both number with 'ans' gives zero then return 'ans' as it is the GCD of the numbers, if it does not give zero than decrease the value of 'ans'
+            by one and keep the step 2 untill 'ans' become 0.
+            
+            int countTrailingzero(int a,int b){
+            int ans = min(a,b);
+            while(ans!=0){
+                if(a%ans == 0 && b%ans == 0){
+                    break;
+                }
+                ans--;
+            }
+            return ans;
+            }
+            
+    ii) Optimized Approach using Euclid Algorithm :-
+            
+            Iteratively :-
+                    
+                    int gcd(int a,int b){
+                    while(a != b){
+                        if(a>b){
+                            a= a-b;
+                        }
+                        else{
+                            b=b-a;
+                        }
+                    }
+                    return a;
+                    }
+            
+            Recursively :-
+                    
+                    int gcd(int a,int b){
+                    if(b == 0)
+                        return a;
+                    else 
+                        return gcd(b,a%b);
+                    } 
+            
+            
